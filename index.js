@@ -1,11 +1,15 @@
 import  express, { request, response } from "express";
 import { fetchData } from "./fetchData.js";
+import cors from "cors";
 
 
 
 const app= express();
 app.use(express.json()); 
-const PORT=9000;
+app.use(cors());
+
+// const PORT=9000;
+const PORT= process.env.PORT || 9000;
 app.listen(PORT,()=>console.log("Server started at port",PORT));
 
 
