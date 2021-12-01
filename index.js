@@ -21,9 +21,10 @@ import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 
 
-const MONGO_URL="mongodb://localhost";
-
+// const MONGO_URL="mongodb://localhost";
 dotenv.config();
+const MONGO_URL=process.env.MONGO_URL;
+
 async function  createConnection() {
    const client=new MongoClient(MONGO_URL);
    await client.connect()
@@ -37,14 +38,12 @@ export const client = await createConnection();
 
 
 //---------- amazon data ------------------------
-// import { FetchData } from "./FetchData.js";
 
 
 let amazonUrl=["B084HZRFH6","B098P1K6W9","B098XLXDRS",
                 "B099ZZ13JB","B09G3CWM3J","B098XM2SJ4",
                 "B08R777GBL","B08MQ7QKHJ","B08DHHB2W1",
                 "B08N5VSQNG"];
-// amazonUrl.map((url)=> FetchData(`https://www.amazon.in/dp/${url}`));
 
 
 function amazon(){
@@ -65,7 +64,7 @@ app.get("/amazon",async(request,response)=>{
 })
 async function getData(filter){
     return await client
-    .db("firstdb")
+    .db("web-scraping")
     .collection("amazon")
     .find(filter)
     .toArray();
@@ -75,7 +74,6 @@ async function getData(filter){
 
 
 //--------------flipkart data---------------------
-// import { fetchFlipkartData } from "./fetchFlipkartData.js";
 
 
 
@@ -84,7 +82,6 @@ let flipkartUrl = ["itm81d679403c2b4", "itm162375acb8370", "itma0d1e81b14743",
     "itm9c57c2a56c825", "itmf123866f9d6dd", "itm5d6f2871d1bbf",
     "itmfb30d06b478fc"];
 
-// flipkartUrl.map((url) => fetchFlipkartData(`https://www.flipkart.com/redmi-9i-sea-blue-64-gb/p/${url}`));
 
 function flipkart(){
     const idValues={
@@ -107,7 +104,7 @@ app.get("/flipkart",async(request,response)=>{
 })
 async function getFlipkartData(filter){
     return await client
-    .db("firstdb")
+    .db("web-scraping")
     .collection("flipkart")
     .find(filter)
     .toArray();
@@ -128,7 +125,6 @@ let SnapdealUrl = ["627802238637","653731982232","641633141331",
 
 
 
-// SnapdealUrl.map((url) =>    fetchData(`https://www.snapdeal.com/product/royal-ro335-bluetooth-over-ear/${url}`,idValues));
 
 
 
@@ -151,7 +147,7 @@ app.get("/snapdeal",async(request,response)=>{
 })
 async function getSnapdealData(filter){
     return await client
-    .db("firstdb")
+    .db("web-scraping")
     .collection("Snapdeal")
     .find(filter)
     .toArray();
@@ -163,10 +159,10 @@ async function getSnapdealData(filter){
 
 // -----------Refreshing aftr 12 hrs---------------
 
-//  const Track=()=>{
-//     flipkart();
-//     amazon();
-//     snapdeal();
-//     setTimeout(Track,43200000);
-// };
-// Track();
+ const Track=()=>{
+    flipkart();
+    amazon();
+    snapdeal();
+    setTimeout(Track,43200000);
+};
+Track();

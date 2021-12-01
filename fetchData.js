@@ -5,7 +5,7 @@ import { client} from "./index.js";
 
 export const fetchData = (productUrl, idValues) => {
     client
-    .db("firstdb")
+    .db("web-scraping")
     .collection(idValues.site)
     .deleteMany({});
     axios.get(productUrl, {
@@ -30,7 +30,7 @@ export const fetchData = (productUrl, idValues) => {
             finalPrice
         };
          client
-            .db("firstdb")
+            .db("web-scraping")
             .collection(idValues.site)
             .insertOne(result);
     });
