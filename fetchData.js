@@ -15,12 +15,20 @@ export const fetchData = (productUrl, idValues) => {
     }).then(({ data }) => {
         const $ = cheerio.load(data);
         let mrpDollarPrice = $(idValues.mrp).text();
-        if (idValues.site === "Snapdeal")
+        if (idValues.site === "Snapdeal"){
             var mrp = Number(mrpDollarPrice.replace(/[^0-9-]+/g, ""));
-        else
+        }
+        else{
             var mrp = Number(mrpDollarPrice.replace(/[^0-9.-]+/g, ""));
-        let finalDollarPrice = $(idValues.price).text();
-        var finalPrice = Number(finalDollarPrice.replace(/[^0-9.-]+/g, ""));
+        }
+        var finalDollarPrice = $(idValues.price).text();
+        if(Number(finalDollarPrice.replace(/[^0-9.-]+/g, ""))===0){
+            finalDollarPrice = $("#priceblock_dealprice").text();
+            var finalPrice = Number(finalDollarPrice.replace(/[^0-9.-]+/g, ""));
+         }
+        else{
+            var finalPrice = Number(finalDollarPrice.replace(/[^0-9.-]+/g, ""));
+         }
         var title = $(idValues.title).text().trim();
         var picture = $(idValues.picture).attr('src');
         let result = {
