@@ -69,13 +69,13 @@ function amazon(){
 } 
 amazonUrl.map((url)=> fetchData(url,idValues));
 }
-// amazon();
+amazon();
 
 app.get("/amazon",async(request,response)=>{
-    const data= await getData({})
+    const data= await getAmazonData({})
     response.send(data);
 })
-async function getData(filter){
+async function getAmazonData(filter){
     return await client
     .db("web-scraping")
     .collection("amazon")
@@ -106,7 +106,7 @@ function flipkart(){
 } 
 flipkartUrl.map((url) => fetchData(`https://www.flipkart.com/redmi-9i-sea-blue-64-gb/p/${url}`,idValues));
 }
-// flipkart();
+flipkart();
 
 
 
@@ -151,7 +151,7 @@ function snapdeal(){
 } 
 SnapdealUrl.map((url) =>    fetchData(`https://www.snapdeal.com/product/royal-ro335-bluetooth-over-ear/${url}`,idValues));
 }
-// snapdeal();
+snapdeal();
 
 
 app.get("/snapdeal",async(request,response)=>{
@@ -172,10 +172,10 @@ async function getSnapdealData(filter){
 
 // -----------Refreshing aftr 12 hrs---------------
 
- const Track=()=>{
-    flipkart();
-    amazon();
-    snapdeal();
-    setTimeout(Track,43200000);
-};
-Track();
+//  const Track=()=>{
+//     flipkart();
+//     amazon();
+//     snapdeal();
+//     setTimeout(Track,43200000);
+// };
+// Track();
