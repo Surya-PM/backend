@@ -44,10 +44,19 @@ export const client = await createConnection();
 //---------- amazon data ------------------------
 
 
-let amazonUrl=["B084HZRFH6","B098P1K6W9","B098XLXDRS",
-                "B099ZZ13JB","B09G3CWM3J","B098XM2SJ4",
-                "B08R777GBL","B08MQ7QKHJ","B08DHHB2W1",
-                "B08N5VSQNG"];
+
+let amazonUrl=[
+    "https://www.amazon.in/dp/B084HZRFH6/ref=s9_acsd_al_bw_c2_x_0_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-5&pf_rd_r=6TS7CXBSZDMMH8K8HNYJ&pf_rd_t=101&pf_rd_p=a11b11f6-f341-424b-bb75-77bb48615999&pf_rd_i=1375424031",
+    "https://www.amazon.in/dp/B098XLXDRS/ref=s9_acsd_al_bw_c2_x_1_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-5&pf_rd_r=6TS7CXBSZDMMH8K8HNYJ&pf_rd_t=101&pf_rd_p=a11b11f6-f341-424b-bb75-77bb48615999&pf_rd_i=1375424031&th=1",
+    "https://www.amazon.in/dp/B098P1K6W9/ref=s9_acsd_al_bw_c2_x_2_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-5&pf_rd_r=6TS7CXBSZDMMH8K8HNYJ&pf_rd_t=101&pf_rd_p=a11b11f6-f341-424b-bb75-77bb48615999&pf_rd_i=1375424031",
+    "https://www.amazon.in/dp/B099ZZ13JB/ref=s9_acsd_al_bw_c2_x_3_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-5&pf_rd_r=6TS7CXBSZDMMH8K8HNYJ&pf_rd_t=101&pf_rd_p=a11b11f6-f341-424b-bb75-77bb48615999&pf_rd_i=1375424031",
+    "https://www.amazon.in/dp/B09G3CWM3J/ref=s9_acsd_al_bw_c2_x_4_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-5&pf_rd_r=6TS7CXBSZDMMH8K8HNYJ&pf_rd_t=101&pf_rd_p=a11b11f6-f341-424b-bb75-77bb48615999&pf_rd_i=1375424031",
+    "https://www.amazon.in/dp/B098XM2SJ4/ref=s9_acsd_al_bw_c2_x_5_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-5&pf_rd_r=6TS7CXBSZDMMH8K8HNYJ&pf_rd_t=101&pf_rd_p=a11b11f6-f341-424b-bb75-77bb48615999&pf_rd_i=1375424031",
+    "https://www.amazon.in/dp/B08R777GBL/ref=s9_acsd_al_bw_c2_x_6_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-5&pf_rd_r=6TS7CXBSZDMMH8K8HNYJ&pf_rd_t=101&pf_rd_p=a11b11f6-f341-424b-bb75-77bb48615999&pf_rd_i=1375424031",
+    "https://www.amazon.in/dp/B08MQ7QKHJ/ref=s9_acsd_al_bw_c2_x_7_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-5&pf_rd_r=6TS7CXBSZDMMH8K8HNYJ&pf_rd_t=101&pf_rd_p=a11b11f6-f341-424b-bb75-77bb48615999&pf_rd_i=1375424031",
+    "https://www.amazon.in/dp/B08DHHB2W1/ref=s9_acsd_al_bw_c2_x_8_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-5&pf_rd_r=6TS7CXBSZDMMH8K8HNYJ&pf_rd_t=101&pf_rd_p=a11b11f6-f341-424b-bb75-77bb48615999&pf_rd_i=1375424031",
+    "https://www.amazon.in/dp/B08N5VSQNG/ref=s9_acsd_al_bw_c2_x_9_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-5&pf_rd_r=6TS7CXBSZDMMH8K8HNYJ&pf_rd_t=101&pf_rd_p=a11b11f6-f341-424b-bb75-77bb48615999&pf_rd_i=1375424031"
+];
 
 
 function amazon(){
@@ -58,7 +67,7 @@ function amazon(){
     price:"#priceblock_ourprice",
     site:"amazon"
 } 
-amazonUrl.map((url)=> fetchData(`https://www.amazon.in/dp/${url}`,idValues));
+amazonUrl.map((url)=> fetchData(url,idValues));
 }
 // amazon();
 
